@@ -8,7 +8,7 @@ use crate::scene::material::reflective::Reflective;
 use crate::scene::object::sphere::Sphere;
 use crate::vec3::{Color, Point3};
 
-fn random_sphere(center: Point3, radius: f64, mut rng: ThreadRng) -> Sphere {
+fn random_sphere(center: Point3, radius: f64, rng: &mut ThreadRng) -> Sphere {
   let random_material = random::<f64>();
 
   let material: Box<dyn Material> = match random_material {
@@ -19,7 +19,7 @@ fn random_sphere(center: Point3, radius: f64, mut rng: ThreadRng) -> Sphere {
     // Metal.
     random_material if random_material < 0.95 => Box::new(Reflective::new(
       Color::random_within_range(0.5, 1.0),
-      rng.gen_range(0.0, 0.5),
+      rng.gen_range(0.0..0.5),
     )),
     // Glass.
     _ => Box::new(Dielectric::new(1.5)),
@@ -61,7 +61,7 @@ pub fn random_spheres() -> Vec<Sphere> {
 
   // Many random small spheres.
   let large_sphere_center = Point3::new(4.0, LARGE_SPHERE_RADIUS, 0.0);
-  let rng = thread_rng();
+  let mut rng = thread_rng();
   for i in -11..11 {
     for j in -11..11 {
       let x = i as f64 + (random::<f64>() * (LARGE_SPHERE_RADIUS + SMALL_SPHERE_RADIUS));
@@ -73,7 +73,7 @@ pub fn random_spheres() -> Vec<Sphere> {
       if (small_sphere_center - large_sphere_center).length()
         > (LARGE_SPHERE_RADIUS + SMALL_SPHERE_RADIUS)
       {
-        let random_sphere = random_sphere(small_sphere_center, SMALL_SPHERE_RADIUS, rng);
+        let random_sphere = random_sphere(small_sphere_center, SMALL_SPHERE_RADIUS, &mut rng);
         spheres.push(random_sphere);
       }
     }

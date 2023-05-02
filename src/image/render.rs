@@ -34,8 +34,8 @@ pub fn render_image<T: Object>(config: Config, world: World<T>) {
       let mut color = Color::zero();
       for _ in 0..config.samples_per_pixel {
         // Use two offset vectors (u,v) to shoot the rays randomly at the pixel.
-        let u = (w as f64 + rng.gen_range(0.0, 1.0)) / (config.image_width - 1) as f64;
-        let v = (h as f64 + rng.gen_range(0.0, 1.0)) / (image_height - 1) as f64;
+        let u = (w as f64 + rng.gen_range(0.0..1.0)) / (config.image_width - 1) as f64;
+        let v = (h as f64 + rng.gen_range(0.0..1.0)) / (image_height - 1) as f64;
 
         let ray = camera.shoot_ray_at(u, v);
 

@@ -42,8 +42,8 @@ impl Vec3 {
     let mut rng = thread_rng();
 
     loop {
-      let c1 = rng.gen_range(-1.0, 1.0);
-      let c2 = rng.gen_range(-1.0, 1.0);
+      let c1 = rng.gen_range(-1.0..1.0);
+      let c2 = rng.gen_range(-1.0..1.0);
       let c3 = 0.0;
 
       let random_point = Vec3::new(c1, c2, c3);
@@ -66,8 +66,8 @@ impl Vec3 {
   pub fn random_unit_vector() -> Vec3 {
     let mut rng = thread_rng();
 
-    let a = rng.gen_range(0.0, PI * 2.0);
-    let z = rng.gen_range(-1.0, 1.0);
+    let a = rng.gen_range(0.0..PI * 2.0);
+    let z = rng.gen_range(-1.0..1.0);
     let r = ((1.0 - (z * z)) as f64).sqrt();
 
     let c1 = a.cos() * r;
@@ -82,9 +82,9 @@ impl Vec3 {
   pub fn random_within_range(min: f64, max: f64) -> Vec3 {
     let mut rng = thread_rng();
 
-    let c1 = rng.gen_range(min, max);
-    let c2 = rng.gen_range(min, max);
-    let c3 = rng.gen_range(min, max);
+    let c1 = rng.gen_range(min..max);
+    let c2 = rng.gen_range(min..max);
+    let c3 = rng.gen_range(min..max);
 
     Vec3 {
       components: [c1, c2, c3],

@@ -4,18 +4,15 @@ Study material on computer graphics and ray tracing.
 
 ## Resources
 
-- [1000 Forms Of Bunnies](https://viclw17.github.io/tag/#/Ray%20Tracing%20in%20One%20Weekend)
 - [Basic ray tracing](https://gabrielgambetta.com/computer-graphics-from-scratch/basic-ray-tracing.html)
 - [Ray Tracing in One Weekend](https://raytracing.github.io/books/RayTracingInOneWeekend.html)
-- [Scratchapixel](https://scratchapixel.com/)
+- [Scratchapixel](https://scratchapixel.com)
 
 ## Summaries
 
 Summaries of resources, etc.
 
 ### Scratchapixel 2.0 - Geometry
-
-[Source](https://scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry/)
 
 #### Points, Vectors, and Normals
 
